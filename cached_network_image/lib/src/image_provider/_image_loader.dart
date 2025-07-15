@@ -5,7 +5,8 @@ import 'dart:ui';
 
 import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 import 'package:cached_network_image_platform_interface'
-        '/cached_network_image_platform_interface.dart' as platform
+    '/cached_network_image_platform_interface.dart'
+    as platform
     show ImageLoader;
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
@@ -87,11 +88,12 @@ class ImageLoader implements platform.ImageLoader {
   ) async* {
     try {
       assert(
-          cacheManager is ImageCacheManager ||
-              (maxWidth == null && maxHeight == null),
-          'To resize the image with a CacheManager the '
-          'CacheManager needs to be an ImageCacheManager. maxWidth and '
-          'maxHeight will be ignored when a normal CacheManager is used.');
+        cacheManager is ImageCacheManager ||
+            (maxWidth == null && maxHeight == null),
+        'To resize the image with a CacheManager the '
+        'CacheManager needs to be an ImageCacheManager. maxWidth and '
+        'maxHeight will be ignored when a normal CacheManager is used.',
+      );
 
       final stream = cacheManager is ImageCacheManager
           ? cacheManager.getImageFile(
@@ -132,7 +134,7 @@ class ImageLoader implements platform.ImageLoader {
       scheduleMicrotask(() {
         evictImage();
       });
-      yield* Stream.error(error, stackTrace);
+      // yield* Stream.error(error, stackTrace);
     } finally {
       await chunkEvents.close();
     }

@@ -31,26 +31,26 @@ class MultiImageStreamCompleter extends ImageStreamCompleter {
         }
       },
       onError: (Object error, StackTrace stack) {
-        reportError(
-          context: ErrorDescription('resolving an image codec'),
-          exception: error,
-          stack: stack,
-          informationCollector: informationCollector,
-          silent: true,
-        );
+        // reportError(
+        //   context: ErrorDescription('resolving an image codec'),
+        //   exception: error,
+        //   stack: stack,
+        //   informationCollector: informationCollector,
+        //   silent: true,
+        // );
       },
     );
     if (chunkEvents != null) {
       _chunkSubscription = chunkEvents.listen(
         reportImageChunkEvent,
         onError: (Object error, StackTrace stack) {
-          reportError(
-            context: ErrorDescription('loading an image'),
-            exception: error,
-            stack: stack,
-            informationCollector: informationCollector,
-            silent: true,
-          );
+          // reportError(
+          //   context: ErrorDescription('loading an image'),
+          //   exception: error,
+          //   stack: stack,
+          //   informationCollector: informationCollector,
+          //   silent: true,
+          // );
         },
       );
     }
@@ -132,13 +132,13 @@ class MultiImageStreamCompleter extends ImageStreamCompleter {
     try {
       _nextFrame = await _codec!.getNextFrame();
     } on Object catch (exception, stack) {
-      reportError(
-        context: ErrorDescription('resolving an image frame'),
-        exception: exception,
-        stack: stack,
-        informationCollector: _informationCollector,
-        silent: true,
-      );
+      // reportError(
+      //   context: ErrorDescription('resolving an image frame'),
+      //   exception: exception,
+      //   stack: stack,
+      //   informationCollector: _informationCollector,
+      //   silent: true,
+      // );
       return;
     }
     if (_codec!.frameCount == 1) {
